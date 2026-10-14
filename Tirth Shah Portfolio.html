@@ -1,0 +1,361 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tirth Shah Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky top bar, left-aligned hero with a git-log card, then sections with a label column and content column. */
+:root{
+  --bg:#eef1f4; --surface:#ffffff; --fg:#14202b; --muted:#53626f; --line:#d3dae1;
+  --accent:#2457d6; --accent-ink:#ffffff; --accent-soft:#dde7fb;
+  --ok:#1d7a4d; --ok-soft:#dcf1e5; --warn:#8a5a00; --warn-soft:#f7ebcf; --plan:#53626f; --plan-soft:#e3e8ed;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1620; --surface:#15202c; --fg:#e6ecf2; --muted:#9aa9b7; --line:#273646;
+    --accent:#7ea6ff; --accent-ink:#0b1320; --accent-soft:#1c2c4a;
+    --ok:#6fd3a0; --ok-soft:#173528; --warn:#e7bb62; --warn-soft:#3a2d12; --plan:#9aa9b7; --plan-soft:#223142;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1620; --surface:#15202c; --fg:#e6ecf2; --muted:#9aa9b7; --line:#273646;
+  --accent:#7ea6ff; --accent-ink:#0b1320; --accent-soft:#1c2c4a;
+  --ok:#6fd3a0; --ok-soft:#173528; --warn:#e7bb62; --warn-soft:#3a2d12; --plan:#9aa9b7; --plan-soft:#223142;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:16px;min-height:56px}
+.brand{font:700 18px/1 var(--display);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--accent)}
+nav{flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;justify-content:flex-end}
+nav a{display:block;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--muted);font:500 14px/1 var(--body);white-space:nowrap}
+nav a:hover{color:var(--fg);background:var(--plan-soft)}
+.theme{flex:none;width:38px;height:38px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;display:grid;place-items:center}
+.theme:hover{border-color:var(--accent)}
+.theme svg{width:18px;height:18px}
+
+/* hero */
+.hero{padding-block:56px 40px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:end}
+.tag{font:500 13px/1 var(--mono);color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin:0 0 16px}
+h1{font:800 clamp(44px,8vw,88px)/.95 var(--display);letter-spacing:-.03em;margin:0 0 20px;text-wrap:balance}
+.lede{font-size:18px;max-width:52ch;color:var(--muted);margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font:600 15px/1 var(--body);text-decoration:none;color:var(--fg)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn svg{width:18px;height:18px;flex:none}
+.log{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;font:400 14px/1.7 var(--mono);min-width:0;overflow-x:auto}
+.log .head{color:var(--muted);margin:0 0 10px}
+.log .head b{color:var(--accent);font-weight:500}
+.log ol{list-style:none;margin:0;padding:0}
+.log li{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:4px 0}
+.log .h{color:var(--accent)}
+.log .now .h::after{content:" (HEAD)";color:var(--ok)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+section .wrap{display:grid;grid-template-columns:200px minmax(0,1fr);gap:40px}
+h2{font:700 28px/1.1 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+.kicker{font:500 12px/1 var(--mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+.body > *:first-child{margin-top:0}
+.body p{max-width:65ch;margin:0 0 16px}
+
+/* about facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px}
+.fact{border-left:3px solid var(--accent);padding:2px 0 2px 14px}
+.fact dt{font:500 12px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.fact dd{margin:0;font-weight:500}
+
+/* education */
+.edu{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:grid;gap:6px}
+.edu h3{font:700 22px/1.2 var(--display);margin:0}
+.edu .meta{color:var(--muted);margin:0}
+.edu .chip{justify-self:start;margin-top:8px}
+
+/* skills */
+.skillgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.skillgroups h3{font:500 13px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:0 0 12px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.pills li{padding:7px 12px;border:1px solid var(--line);background:var(--surface);border-radius:6px;font:500 14px/1 var(--mono)}
+.pills.learning li{border-style:dashed;color:var(--muted);background:transparent}
+
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filters button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font:500 14px/1 var(--body);cursor:pointer}
+.filters button:hover{border-color:var(--accent);color:var(--fg)}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card[hidden]{display:none!important}
+.card h3{font:700 19px/1.2 var(--display);margin:0}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0;margin-top:auto}
+.stack li{font:400 12px/1 var(--mono);color:var(--muted);padding:5px 8px;background:var(--bg);border-radius:4px}
+.chip{display:inline-block;font:500 12px/1 var(--mono);padding:6px 9px;border-radius:999px;white-space:nowrap}
+.chip.done{background:var(--ok-soft);color:var(--ok)}
+.chip.wip{background:var(--warn-soft);color:var(--warn)}
+.chip.plan{background:var(--plan-soft);color:var(--plan)}
+.more{margin-top:20px;font-size:15px;color:var(--muted)}
+.more a{color:var(--accent);font-weight:500}
+
+/* certifications */
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.certs li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.certs strong{display:block;font-weight:600}
+.certs span.sub{color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.contact li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+.contact .k{font:500 12px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.contact a{color:var(--accent);font-weight:500;overflow-wrap:anywhere}
+.contact .txt{overflow-wrap:anywhere}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font:400 13px/1.5 var(--mono)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  section .wrap{grid-template-columns:minmax(0,1fr);gap:20px}
+  .hero{padding-block:40px 28px}
+  section{padding-block:40px}
+  .contact li{grid-template-columns:minmax(0,1fr);gap:6px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#home">tirth<span>.</span>shah</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<div class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <p class="tag">First-year B.Tech · JECRC University</p>
+      <h1>Tirth Shah</h1>
+      <p class="lede">I'm a first-year engineering student in Jaipur learning to build things that run. I write small programs, ship them to GitHub, and try to make each one a little better than the last.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/TIRTHSHAH1608" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/tirth-shah-36a302433" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="log" aria-label="Where I am right now">
+      <p class="head"><b>$</b> git log --oneline</p>
+      <ol>
+        <li class="now"><span class="h">sem-1</span><span>Studying B.Tech, Year 1, at JECRC University</span></li>
+        <li><span class="h">next</span><span>Ship my first projects on GitHub</span></li>
+        <li><span class="h">goal</span><span>Get strong at C++, Python and the web</span></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div><p class="kicker">Who I am</p><h2>About me</h2></div>
+    <div class="body">
+      <p>I'm Tirth Shah, a first-year B.Tech student at JECRC University in Jaipur, Rajasthan. I like understanding how a program works from the first line to the output, so I start with small projects, finish them, and push them to GitHub.</p>
+      <p>Right now I'm building a base in programming, problem solving and web basics. I want to grow from console programs to full apps, and to find an internship once I have a solid set of projects behind me.</p>
+      <dl class="facts">
+        <div class="fact"><dt>Studying</dt><dd>B.Tech, 1st year</dd></div>
+        <div class="fact"><dt>College</dt><dd>JECRC University</dd></div>
+        <div class="fact"><dt>City</dt><dd>Jaipur, Rajasthan</dd></div>
+        <div class="fact"><dt>Interests</dt><dd>Programming, web, problem solving</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div><p class="kicker">Where I study</p><h2>Education</h2></div>
+    <div class="body">
+      <div class="edu">
+        <h3>Bachelor of Technology</h3>
+        <p class="meta">JECRC University, Jaipur, Rajasthan</p>
+        <p class="meta">First year · Semester 1</p>
+        <span class="chip wip">Currently studying</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div><p class="kicker">What I use</p><h2>Skills</h2></div>
+    <div class="body">
+      <div class="skillgroups">
+        <div>
+          <h3>Languages</h3>
+          <ul class="pills"><li>C</li><li>C++</li><li>Python</li><li>JavaScript</li></ul>
+        </div>
+        <div>
+          <h3>Web</h3>
+          <ul class="pills"><li>HTML5</li><li>CSS3</li><li>Responsive layout</li></ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul class="pills"><li>Git</li><li>GitHub</li><li>VS Code</li></ul>
+        </div>
+        <div>
+          <h3>Learning next</h3>
+          <ul class="pills learning"><li>Data structures</li><li>Algorithms</li><li>SQL</li><li>Linux shell</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div><p class="kicker">What I build</p><h2>Projects</h2></div>
+    <div class="body">
+      <div class="filters" role="group" aria-label="Filter projects by status">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="done" aria-pressed="false">Completed</button>
+        <button type="button" data-f="wip" aria-pressed="false">In progress</button>
+        <button type="button" data-f="plan" aria-pressed="false">Planned</button>
+      </div>
+      <div class="grid" id="grid">
+        <article class="card" data-s="done">
+          <div class="top"><h3>Personal Portfolio</h3><span class="chip done">Completed</span></div>
+          <p>This site. A responsive portfolio with light and dark themes and a project filter, built with plain HTML, CSS and JavaScript.</p>
+          <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+        </article>
+        <article class="card" data-s="done">
+          <div class="top"><h3>Task Tracker</h3><span class="chip done">Completed</span></div>
+          <p>A to-do app where you add, edit, tick off and delete tasks. Tasks stay saved in the browser after a refresh.</p>
+          <ul class="stack"><li>JavaScript</li><li>localStorage</li></ul>
+        </article>
+        <article class="card" data-s="done">
+          <div class="top"><h3>Student Marks Manager</h3><span class="chip done">Completed</span></div>
+          <p>A console program that takes marks for several subjects, works out percentages and prints a ranked result list.</p>
+          <ul class="stack"><li>C++</li><li>Arrays</li><li>Functions</li></ul>
+        </article>
+        <article class="card" data-s="wip">
+          <div class="top"><h3>Expense Splitter</h3><span class="chip wip">In progress</span></div>
+          <p>Splits shared expenses within a group and shows who pays whom, using as few payments as possible.</p>
+          <ul class="stack"><li>Python</li><li>Dictionaries</li></ul>
+        </article>
+        <article class="card" data-s="wip">
+          <div class="top"><h3>Number Guessing Game</h3><span class="chip wip">In progress</span></div>
+          <p>A terminal game with difficulty levels, a limited number of tries and a running best score.</p>
+          <ul class="stack"><li>Python</li><li>Loops</li><li>Random</li></ul>
+        </article>
+        <article class="card" data-s="plan">
+          <div class="top"><h3>Weather Dashboard</h3><span class="chip plan">Planned</span></div>
+          <p>A small web page that shows the current weather for any city, using a public weather API.</p>
+          <ul class="stack"><li>JavaScript</li><li>REST API</li><li>CSS</li></ul>
+        </article>
+      </div>
+      <p class="more">Code for each project goes on my <a href="https://github.com/TIRTHSHAH1608" target="_blank" rel="noopener">GitHub profile</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div><p class="kicker">Recognition</p><h2>Certifications and achievements</h2></div>
+    <div class="body">
+      <ul class="certs">
+        <li>
+          <div><strong>Digital Data &amp; AI Literacy</strong><span class="sub">B.Tech Semester 1 course, JECRC University</span></div>
+          <span class="chip wip">In progress</span>
+        </li>
+        <li>
+          <div><strong>Building my certificate list</strong><span class="sub">I'm at the start of my degree and will add certificates here as I earn them.</span></div>
+          <span class="chip plan">Coming up</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div><p class="kicker">Say hello</p><h2>Contact</h2></div>
+    <div class="body">
+      <ul class="contact">
+        <li><span class="k">GitHub</span><a href="https://github.com/TIRTHSHAH1608" target="_blank" rel="noopener">github.com/TIRTHSHAH1608</a></li>
+        <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/tirth-shah-36a302433" target="_blank" rel="noopener">linkedin.com/in/tirth-shah-36a302433</a></li>
+        <!-- Replace the address below with your real email. -->
+        <li><span class="k">Email</span><span class="txt" id="email">your-email@example.com</span></li>
+        <li><span class="k">Location</span><span class="txt">Jaipur, Rajasthan, India</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Tirth Shah · B.Tech Year 1 · JECRC University</span>
+    <span>Built with HTML, CSS and JavaScript</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var saved=localStorage.getItem("ts-theme");if(saved==="dark"||saved==="light")root.setAttribute("data-theme",saved);}catch(e){}
+  document.getElementById("themeBtn").addEventListener("click",function(){
+    var cur=root.getAttribute("data-theme");
+    if(!cur){cur=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+    var next=cur==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("ts-theme",next);}catch(e){}
+  });
+  var btns=document.querySelectorAll(".filters button");
+  var cards=document.querySelectorAll("#grid .card");
+  btns.forEach(function(b){
+    b.addEventListener("click",function(){
+      var f=b.getAttribute("data-f");
+      btns.forEach(function(x){x.setAttribute("aria-pressed",x===b?"true":"false");});
+      cards.forEach(function(c){c.hidden=!(f==="all"||c.getAttribute("data-s")===f);});
+    });
+  });
+})();
+</script>
+
+</body></html>
